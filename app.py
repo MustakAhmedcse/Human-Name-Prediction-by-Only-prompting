@@ -76,7 +76,7 @@ def predict():
         try:
             logger.info(f"Calling OpenAI API for name: '{name}'")
             response = client.chat.completions.create(
-                model="gpt-4.1",
+                model="gpt-4.1-nano",
                 messages=[
                     {"role": "system", "content": "You are a precise name classification assistant outputting only JSON."},
                     {"role": "user", "content": prompt}
@@ -105,7 +105,7 @@ def predict():
                     return jsonify({
                         "name": name,
                         "prediction": "Not Realistic"
-                        #,"reason": result.get("reason", "Reason not provided by AI.")
+                        ,"reason": result.get("reason", "Reason not provided by AI.")
                     }), 200
 
             except json.JSONDecodeError:
